@@ -1,20 +1,21 @@
-.PHONY: prepare-servers
+install-ansible:
+	sudo apt-get update
+	sudo apt-get install software-properties-common
+	sudo apt-add-repository --yes --update ppa:ansible/ansible
+	sudo apt-get install ansible
+
+install-galaxy-roles:
+	ansible-galaxy install -r requirements.yml
 
 prepare-servers:
 	ansible-playbook -i inventory.ini playbook.yml -u root
 
-.PHONY: deploy-redmine
-
 deploy-redmine:
 	ansible-galaxy install -r requirements.yml
-	ansible-playbook -i inventory.ini deploy_redmine.yml
+	ansible-playbook -i inventory.ini deploy_redmine.yml --ask-vault-pass
 
-.PHONY: encrypt-vault decrypt-vault edit-vault
-
-# Шифрование файла секретов
 encrypt-vault:
 	ansible-vault encrypt group_vars/webservers/vault.yml
 
-# Расшифровка файла секретов
 decrypt-vault:
 	ansible-vault decrypt group_vars/webservers/vault.yml

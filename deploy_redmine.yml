@@ -2,38 +2,27 @@
 - name: Deploy Redmine application
   hosts: webservers
   become: yes
+  vars:
+    redmine_env_path: .env
   tasks:
-    - name: pythin3-pip
-      apt:
-        name: python3-pip
-        update_cache: yes
-        cache_valid_time: 604800 # 1 week
-      tags:
-        - setup
-
-    - name: Ignore PEP 668 because it's silly.
-      ansible.builtin.file:
-        path: /usr/lib/python3.11/EXTERNALLY-MANAGED
-        state: absent
-      tags:
-        - setup
-
-    - name: pip
-      pip:
-        name: docker
-      tags:
-        - setup
-
     - name: Copy .env file for Redmine
       ansible.builtin.template:
         src: redmine.env.j2
-        dest: .env
+        dest: "{{ redmine_env_path }}"
         mode: '0644'
 
     - name: Run Redmine container
       community.docker.docker_container:
         name: redmine
         image: redmine
-        published_ports: 3000:3000
-        env_file: .env
+        published_ports:
+          - "3000:3000"
+        env_file: "{{ redmine_env_path }}"
       become: yes
+  tags:
+    - redmine
+
+  roles:
+    - datadog.datadog
+  tags:
+    - datadog

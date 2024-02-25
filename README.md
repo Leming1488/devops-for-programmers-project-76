@@ -1,24 +1,51 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/Leming1488/devops-for-programmers-project-76/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Leming1488/devops-for-programmers-project-76/actions)
 
-# Проект Ansible для установки pip и Docker
+# Деплой Docker-образов с помощью Ansible
 
-## Подготовка
+## Управление развертыванием Redmine и настройкой DataDog
 
-Убедитесь, что Ansible установлен на вашей машине. Если нет, установите его согласно официальной документации.
+Этот проект включает в себя автоматизированный процесс для развертывания приложения Redmine на серверах, а также настройку мониторинга с помощью агента DataDog.
 
-## Установка зависимостей
+## Начало работы
 
-Для установки зависимостей из Ansible Galaxy выполните:
+Перед началом работы убедитесь, что на вашей машине установлены Ansible и необходимые зависимости.
 
-    ansible-galaxy install -r requirements.yml
+### Установка Ansible
 
-## Запуск плейбука
+Выполните следующие команды для установки Ansible на системе Ubuntu:
 
-Для запуска плейбука используйте следующую команду:
+```bash
+make install-ansible
 
-    ansible-playbook -i inventory.ini playbook.yml
+###  Установка зависимостей из Ansible Galaxy
 
-## Конфигурация
+```bash
+make install-galaxy-roles
 
-Для настройки переменных проекта отредактируйте файлы в директории `group_vars/`.
+
+### Подготовка серверов
+
+Для начальной подготовки серверов под развертывание приложения используйте команду:
+
+```bash
+make prepare-servers
+
+### Развертывание Redmine
+
+Для развертывания приложения Redmine на серверах выполните:
+
+```bash
+make deploy-redmine
+
+### Управление секретами с помощью Ansible Vault
+
+Для шифрования файла с секретами:
+
+```bash
+make encrypt-vault
+
+Для расшифровки файла с секретами:
+
+```bash
+make decrypt-vault

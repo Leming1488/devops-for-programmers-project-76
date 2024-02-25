@@ -4,3 +4,11 @@ db_host: "{{ vault_db_host }}"
 db_port: "{{ vault_db_port }}"
 db_database: "{{ vault_db_database }}"
 db_sslmode: "{{ vault_db_sslmode }}"
+
+datadog_api_key: "{{ vault_datadog_api_key }}"
+datadog_site: ap1.datadoghq.com
+datadog_checks:
+  http_check:
+    instances:
+      - name: redmine instance
+        url: http://localhost:3000
