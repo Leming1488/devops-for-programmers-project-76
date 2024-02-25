@@ -1,0 +1,13 @@
+---
+- name: Install pip and docker module
+  hosts: webservers
+  become: yes
+
+  roles:
+    - geerlingguy.pip
+
+  tasks:
+    - name: Install docker module using pip
+      pip:
+        name: docker
+        state: present
