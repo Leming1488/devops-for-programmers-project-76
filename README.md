@@ -15,37 +15,32 @@
 
 Выполните следующие команды для установки Ansible на системе Ubuntu:
 
-```bash
-make install-ansible
+`make install-ansible`
 
-###  Установка зависимостей из Ansible Galaxy
+### Установка зависимостей из Ansible Galaxy
 
-```bash
-make install-galaxy-roles
+
+`make install-galaxy-roles`
 
 
 ### Подготовка серверов
 
 Для начальной подготовки серверов под развертывание приложения используйте команду:
 
-```bash
-make prepare-servers
+`make prepare-servers`
 
 ### Развертывание Redmine
 
 Для развертывания приложения Redmine на серверах выполните:
 
-```bash
-make deploy-redmine
+`make deploy-redmine`
 
 ### Управление секретами с помощью Ansible Vault
 
 Для шифрования файла с секретами:
 
-```bash
-make encrypt-vault
+`make encrypt-vault`
 
 Для расшифровки файла с секретами:
 
-```bash
-make decrypt-vault
+`make decrypt-vault`
