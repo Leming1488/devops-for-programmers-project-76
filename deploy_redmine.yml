@@ -1,0 +1,18 @@
+---
+- name: Deploy Redmine application
+  hosts: webservers
+  become: yes
+  tasks:
+    - name: Copy .env file for Redmine
+      ansible.builtin.template:
+        src: redmine.env.j2
+        dest: .env
+        mode: '0644'
+
+    - name: Run Redmine container
+      community.docker.docker_container:
+        name: redmine
+        image: redmine
+        published_ports: 3000:3000
+        env_file: .env
+      become: yes
