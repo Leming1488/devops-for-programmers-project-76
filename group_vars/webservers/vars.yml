@@ -6,7 +6,7 @@ db_database: "{{ vault_db_database }}"
 db_sslmode: "{{ vault_db_sslmode }}"
 
 datadog_api_key: "{{ vault_datadog_api_key }}"
-datadog_site: ap1.datadoghq.com
+datadog_site: us5.datadoghq.com
 datadog_checks:
   http_check:
     instances:
