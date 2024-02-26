@@ -1,6 +1,10 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/Leming1488/devops-for-programmers-project-76/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Leming1488/devops-for-programmers-project-76/actions)
 
+### GithubAction status:
+[![Actions Status](https://github.com/Leming1488/devops-for-programmers-project-76/actions/workflows/push.yml/badge.svg)](https://github.com/Leming1488/devops-for-programmers-project-76/actions)
+
+
 # Деплой Docker-образов с помощью Ansible
 
 ## Управление развертыванием Redmine и настройкой DataDog
